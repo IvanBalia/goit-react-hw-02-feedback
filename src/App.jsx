@@ -1,8 +1,7 @@
-//import { render } from "@testing-library/react";
+
 import React, { Component } from "react";
-//import { onLeaveFeedback } from "./Buttons.js/onLeaveFeedback";
-import { FeedbackOptions } from "./FeedbackOptions";
-import { Statistics } from "./Statistics";
+import { FeedbackOptions } from "./components/feedbackOptions/FeedbackOptions";
+import { Statistics } from "./components/Statistics/Statistics";
 
   export class App extends Component {
   state = {
@@ -12,16 +11,12 @@ import { Statistics } from "./Statistics";
     };
 
     
-    
+
     onLeaveFeedback = (option) => {
       this.setState(prevState => {
-        return {
-          good: prevState.good + 1 * (option === 'good'),
-          neutral: prevState.neutral + 1 * (option === 'neutral'),
-          bad: prevState.bad + 1 * (option === 'bad'),
-        }
+        return { ...prevState,[option]:prevState[option]+1}
       })
-    };
+    }
 
     countTotalFeedback(a,b,c) {
         return a+b+c
